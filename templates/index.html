@@ -1,0 +1,459 @@
+{% extends('base.html') %}
+{% block title %} Enigma Cafe {% endblock %}
+{% block style %}
+<style>
+    .flatpickr-monthDropdown-months {
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300 !important;
+        font-style: normal;
+        font-size: 21px !important;
+        padding: 1px 15px !important;
+        border: 1.5px solid #c57120 !important;
+        color: #c57120 !important;
+    }
+
+    .flatpickr-monthDropdown-months:hover {
+        background-color: white !important;
+    }
+
+
+    .numInput {
+        font-style: italic !important;
+        padding: 0px !important;
+        color: #c57120 !important;
+    }
+
+    .numInputWrapper:hover {
+        background-color: white;
+    }
+
+    .flatpickr-weekday {
+        color: #d79759 !important;
+    }
+
+
+    .flatpickr-day.today {
+        border-color: #d79759 !important;
+    }
+
+    .flatpickr-day.today:hover {
+        background-color: #d79759 !important;
+    }
+
+    .flatpickr-day.today:focus {
+        background-color: #c57120 !important;
+        border-color: #c57120 !important;
+    }
+
+    .flatpickr-day.selected {
+        background-color: #c57120 !important;
+        border-color: #c57120 !important;
+    }
+
+    .flatpickr-day.selected:hover {
+        background-color: #c57120 !important;
+        border-color: #c57120 !important;
+    }
+
+    .flatpickr-day:hover {
+        background-color: #d79759 !important;
+        border-color: #d79759 !important;
+        color: white !important;
+    }
+
+    .flatpickr-day:focus {
+        background-color: #c57120 !important;
+        border-color: #c57120 !important;
+        color: white !important;
+    }
+
+    .flatpickr-day.nextMonthDay:hover, .flatpickr-day.prevMonthDay:hover {
+        background-color: #e6e6e6 !important;
+        border-color: #e6e6e6 !important;
+        color: #b2b2b2 !important;
+    }
+
+    .flatpickr-day.nextMonthDay.selected:hover, .flatpickr-day.prevMonthDay.selected:hover {
+        background-color: #c57120 !important;
+        border-color: #c57120 !important;
+        color: white !important;
+    }
+
+    .flatpickr-day.flatpickr-disabled:hover {
+        background-color: white !important;
+        border-color: white !important;
+        color: #ebebeb !important;
+    }
+</style>
+{% endblock %}
+
+{% block slide %}
+    <div id="slide-1" class="slide-item" style="background-image: url(/static/assets/images/header/1.jpg);">
+        <div class="slide-content">
+            <h2 class="slide-title oswald">Coffee is <br> our language</h2>
+            <p class="slide-text merriweather">Lorem ipsum dolor sit amet consectetur adipisicing eli</p>
+            <button class="slide-button open-sans">Read More</button  on>
+        </div>
+    </div>
+    <div id="slide-2" class="slide-item" style="background-image: url(/static/assets/images/header/2.jpg);">
+        <div class="slide-content">
+            <h2 class="slide-title oswald">Henry</h2>
+            <p class="slide-text merriweather">Lorem ipsum dolor sit amet consectetur adipisicing eli</p>
+            <button class="slide-button open-sans">Read More</button  on>
+        </div>
+    </div>
+    <div id="slide-3" class="slide-item" style="background-image: url(/static/assets/images/header/7.jpg);">
+        <div class="slide-content">
+            <h2 class="slide-title oswald">Ricky</h2>
+            <p class="slide-text merriweather">Lorem ipsum dolor sit amet consectetur adipisicing eli</p>
+            <button class="slide-button open-sans">Read More</button  on>
+        </div>
+    </div>
+{% endblock %}
+
+{% block underscore %}
+<div class="underscores">
+    <button class="underscore-1"><i class="fa-solid fa-minus fa-2x"></i></button>
+    <button class="underscore-2"><i class="fa-solid fa-minus fa-2x"></i></button>
+    <button class="underscore-3"><i class="fa-solid fa-minus fa-2x"></i></button>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<section class="container">
+
+    <p class="row merriweather" style="color: #d79759; margin-bottom: 20px;">Contact Us</p>
+    <h3 class="row oswald" style="font-size: 35px; text-align: center;">For more coffee!</h3>
+    <div class="row divider line-divider"></div>
+
+    <form method="post" action="{{ url_for('home') }}" class="row" style="justify-content: space-between;" novalidate="True">
+        <div class="div-reservation">
+            <div class="form-seats">
+                {{ form.seats() }}
+                <span><i class="fa-solid fa-people-group" style="color: #d79759;"></i></span>
+            </div>
+
+            <p class="oswald extra-text">for</p>
+
+            <div class="form-date">
+                {{ form.date(class="flatpickr-input") }}
+                <span ><i class="fa-regular fa-calendar-days" style="color: #d79759;"></i></span>
+            </div>
+
+            <p class="oswald extra-text">at</p>
+
+            <div class="form-time">
+                {{ form.time() }}
+                <span><i class="fa-regular fa-clock" style="color: #d79759;"></i></span>
+            </div>
+
+            {{ form.submitHome(class="form-submit") }}
+        </div>
+
+    </form>
+</section>
+
+<section class="container" id="form-reservation" style="padding-top: 0px;">
+    <div class="row" style="justify-content: space-between;">
+        <div class="container-widget-contact">
+            <div class="schedule-container">
+
+                <h3 class="oswald schedule-title">Opening Hours</h3>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Monday</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour" style="color: #d79759;">Closed</span>
+                </div>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Tuesday</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour">8:00 - 20:00</span>
+                </div>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Wednesday</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour">8:00 - 20:00</span>
+                </div>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Thursday</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour">8:00 - 20:00</span>
+                </div>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Friday</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour">8:00 - 20:00</span>
+                </div>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Saturday</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour">8:00 - 20:00</span>
+                </div>
+
+                <div class="oswald-light row" style="justify-content: space-between;">
+                    <p class="schedule-day">Sunday *</p>
+                    <div class="schedule-line"></div>
+                    <span class="schedule-hour">14:00 - 20:00</span>
+                </div>
+
+                <a href="https://web.whatsapp.com/send/?phone=584147415933&text&type=phone_number&app_absent=0" target="_blank"><p class="schedule-phone oswald-light">Call: +58 414-7415933</p></a>
+            </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1925099513137!2d-72.22380862539924!3d7.769399992249964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e666d16031c462f%3A0x241313df7fad7889!2sENIGMA%20CAF%C3%89!5e0!3m2!1ses!2sve!4v1713649273609!5m2!1ses!2sve"   class="map-container" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<div class="bg-img-main-widget-coffee">
+    <section class="container">
+        <div class="row" style="flex-direction: column;">
+            <div style="text-align: center;">
+                <p class="merriweather" style="color: #d79759; margin-bottom: 20px;">Taste Us</p>
+                <h3 class="oswald" style="font-size: 35px;">Build your own coffee!</h3>
+                <div class="divider line-divider"></div>
+            </div>
+
+            <div class="row container-widget">
+                <div class="main-widget-coffee">
+                    <div class="detail-widget-coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Croissant</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                        <img src="../static/assets/images/icons/1.png" alt="Croissant">
+                    </div>
+                    <div class="detail-widget-coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">French Toast</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                        <img src="../static/assets/images/icons/2.png" alt="French Toast">
+                    </div>
+                    <div class="detail-widget-coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Pancakes</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                        <img src="../static/assets/images/icons/3.png" alt="Pancakes">
+                    </div>
+                </div>
+
+                <img src="../static/assets/images/coffee.png" class="img-widget-coffee" alt="Coffee">
+
+                <div class="main-widget-coffee">
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/4.png" alt="Turkish Coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Turkish Coffee</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/5.png" alt="Coffee To Go">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Coffee To Go</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/6.png" alt="Morning Coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Morning Coffee</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-widget-coffee hidden">
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/1.png" alt="Croissant">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Croissant</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/2.png" alt="French Toast">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">French Toast</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/3.png" alt="Pancakes">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Pancakes</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-all-widget-coffee hidden">
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/4.png" alt="Turkish Coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Turkish Coffee</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/5.png" alt="Coffee To Go">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Coffee To Go</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/6.png" alt="Morning Coffee">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Morning Coffee</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/1.png" alt="Croissant">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Croissant</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/2.png" alt="French Toast">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">French Toast</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                    <div class="detail-widget-coffee" style="grid-template-columns: 50px 1fr; text-align: left;">
+                        <img src="../static/assets/images/icons/3.png" alt="Pancakes">
+                        <div>
+                            <h4 class="oswald" style="margin-bottom: 20px;">Pancakes</h4>
+                            <p class="open-sans-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident eos, qui cum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+</div>
+
+
+<section class="scroll-container">
+    <div class="scroll-content">
+        <img src="/static/assets/images/ig/1.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/2.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/3.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/4.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/5.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/6.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/7.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/8.jpg" alt="Ig">
+        <img src="/static/assets/images/ig/9.jpg" alt="Ig">
+    </div>
+</section>
+
+<section class="container">
+    <div class="row" style="flex-direction: column;">
+        <div style="text-align: center;" id="menu-tiza">
+            <p class="merriweather" style="color: #d79759; margin-bottom: 0px;">Choose Us</p>
+            <h3 class="oswald" style="font-size: 35px;">So many coffee!</h3>
+            <div class="divider line-divider" style="margin-bottom: 20px;"></div>
+        </div>
+
+        <div class="menu-container">
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/1.png" alt="Coffee Menu">
+                <h4 class="oswald">Espresso</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/2.png" alt="Coffee Menu">
+                <h4 class="oswald">Macchiato</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/3.png" alt="Coffee Menu">
+                <h4 class="oswald">Ristretto</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/4.png" alt="Coffee Menu">
+                <h4 class="oswald">Capuccino</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/5.png" alt="Coffee Menu">
+                <h4 class="oswald">Fappuchino</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/6.png" alt="Coffee Menu">
+                <h4 class="oswald">Irish</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/7.png" alt="Coffee Menu">
+                <h4 class="oswald">Mocha</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+            <div class="item-menu">
+                <img src="/static/assets/images/menu/tiza/8.png" alt="Coffee Menu">
+                <h4 class="oswald">Glace</h4>
+                <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti suscipit, in maxime</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="bg-img-coffee-to-go">
+    <section class="container">
+        <div class="row container-coffee-to-go">
+            <img class="img-coffee-to-go" src="/static/assets/images/coffee-enigma.png" alt="Coffee Enigma">
+
+            <div class="coffee-to-go-content">
+                <div class="coffee-to-go-title">
+                    <h3 class="oswald">You Will Take <br> The Enigma ?</h3>
+                    <div class="divider line-divider"></div>
+                </div>
+
+                <div class="coffee-to-go-item">
+                    <img src="/static/assets/images/icons/7-white.png" alt="Coffee Icon">
+                    <div>
+                        <h4 class="oswald">Make it in Home</h4>
+                        <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis at, magnam placeat impedit consectetur ex</p>
+                    </div>
+                </div>
+
+                <div class="coffee-to-go-item">
+                    <img src="/static/assets/images/icons/8-white.png" alt="Coffee Icon">
+                    <div>
+                        <h4 class="oswald">Super Cacao Flavors</h4>
+                        <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis at, magnam placeat impedit consectetur ex</p>
+                    </div>
+                </div>
+
+                <div class="coffee-to-go-item">
+                    <img src="/static/assets/images/icons/9-white.png" alt="Coffee Icon">
+                    <div>
+                        <h4 class="oswald">It's a Secret <span>(discover it)</span></h4>
+                        <p class="open-sans-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis at, magnam placeat impedit consectetur ex</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
