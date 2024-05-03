@@ -7,7 +7,7 @@ from os import getenv
 app = Flask(__name__)
 app.secret_key = getenv('FLASK_KEY')
 
-coming_soon_active = True
+coming_soon_active = False
 
 @app.context_processor
 def inject_datetime():
